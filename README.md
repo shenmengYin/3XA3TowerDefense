@@ -1,0 +1,3 @@
+Please add "-Djava.library.path=src/native/windows(depend on OS, change windows to macosx/linux)" to VM Argument in Run Configuration in any IDE in order to load the library.
+Due to the limit of file size in 10 MB, we could not upload the jar file to gitlab. We have the jar file uploaded to Google Drive instead just in case. 
+Link to file: https://drive.google.com/file/d/18fVnOivA5Y3Y2Z8mkyFcQEVai__btGt8/view?usp=sharing

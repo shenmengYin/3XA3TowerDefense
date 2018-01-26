@@ -1,0 +1,2337 @@
+\documentclass[12,english]{article}
+\usepackage[letterpaper, portrait, margin=1in]{geometry}
+
+\usepackage{amsmath}
+\usepackage[T1]{fontenc}
+\usepackage{babel}
+\usepackage{textcomp}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{placeins}
+\usepackage{graphicx}
+
+\graphicspath{ {img/} }
+
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+      colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=black,          % color of internal links (change box color with linkbordercolor)
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=cyan           % color of external links
+}
+
+\begin{document}
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+        
+        \Huge
+        \textbf{Module Interface Specification}
+        
+        \vspace{0.5cm}
+        \LARGE
+        SFWRENG 3XA3
+        
+        \vspace{1.5cm}
+        
+\Large
+        Group 30
+		\\ Alan Yin (yins1)
+		\\ Huajie Zhu (zhuh5)
+		\\ Junni Pan (panj10)
+        
+        \vspace{1.5cm}
+        
+        \Large
+        November 09, 2017
+        
+    \end{center}
+\end{titlepage}
+
+\newpage
+\tableofcontents
+\listoftables
+\listoffigures
+
+\newpage
+\color{red}{
+\section{Major Revision History}
+\begin{table}[!htbp]
+	\begin{tabular}{|l|l|}
+	    \hline
+		Date & Revision\\ \hline
+		November 6, 2017 & Rough draft of sections\\ \hline
+		November 7, 2017 & Revised sections \\ \hline
+		November 9, 2017 & Revision 0 complete\\ \hline
+		\color{red}{December 6, 2017} & \color{red}{Revision 1 complete}\\ \hline
+	\end{tabular}
+	\caption{Major Revision History}
+\end{table}} \color{black}
+
+\section{Module Hierarchy}
+\begin{table}[!htbp]
+        \begin{tabular}{ll}
+        \toprule
+        Level 1 & Level 2 \\
+        \midrule
+        Hardware Hiding Module & \\
+        \midrule
+        Behaviour Hiding Module 
+        & MainWindow\\
+        & AreaSelector\\
+        & SelectAreaCaptureScreen\\
+        & Data\\ 
+		& Output\\
+		\midrule
+        Software Decision Module 
+        &FrameCapture\\
+        &Point2D\\
+        \bottomrule
+        \end{tabular}
+        \caption{Module Hierarchy}
+        \end{table}
+
+\section{MIS of Game Module}
+		\subsection{Interface Syntax}
+		\subsubsection{Exported Access Programs}
+		\begin{tabular}[pos]{|c|c|c|c|}
+			
+			\hline
+			%	\label
+			\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+			main & args & - & SlickException\\ \hline
+			
+		\end{tabular}
+		
+		\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+		Not Applicable
+		
+		\subsubsection{Environmental Variables}
+		\color{red} external environment \color{black}
+		
+		\subsubsection{Assumptions}
+		None
+		
+		\subsubsection{Access Program Semantics}
+		main():
+		
+		Input: args
+		
+		Transition: Start the application, set the resolution to 1000*700
+		
+		Output: None
+		
+		Exceptions: SlickException
+	
+	
+	
+\section{MIS of GameController Module}
+		\subsection{Interface Syntax}
+		\subsubsection{Exported Access Programs}
+		\begin{tabular}[pos]{|c|c|c|c|}
+			
+			\hline
+			%	\label
+			\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+			GameController & TDMap & - & -\\ \hline
+			setPanelAndButtonProperties & - & - & - \\ \hline
+			setInitialValues & - & - & -\\ \hline
+			setMainFrame & - & - & -\\ \hline
+			startNewWave & - & - & -\\ \hline
+			paintComponent & Graphics & - & -\\ \hline
+			stateChanged & - & - & - \\  \hline
+			setPlaybackSpeed & - & - & - \\ \hline
+			doPause & - & - & - \\ \hline
+			doReturnToMainMenu & - & - & - \\ \hline
+			doStartWave & - & - & - \\ \hline
+			doSelectTower & ActionEvent & - & - \\ \hline
+			doUpgrade & - & - & - \\ \hline
+			doSell & - & - & - \\ \hline
+			doDisplayCritterInfo & - & - & - \\ \hline
+			actionPerformed & ActionEvent & - & - \\ \hline
+			Draw & - & - & - \\ \hline
+			observerUpdate & - & - & - \\ \hline
+			endGame & - & - & - \\ \hline
+			disableAllGameButtons & - & - & - \\ \hline
+			resetPlayerWaveStats & - & - & - \\ \hline
+			spendMoney & int & - & - \\ \hline
+			getControlPanel & - & GameControlPanel & - \\ \hline
+			getPlayPanel & - & MapPanel & - \\ \hline
+			updateTowerInfoText & - & - & - \\ \hline
+			reactToLeftClick & - & - & - \\ \hline
+			buildTower & Tower & - & - \\ \hline
+			updateSelectedTowerInfoAndButtons & - & - & - \\ \hline
+			reactToMouseMove & Point & - & - \\ \hline
+			reactToRightClick & Point & - & - \\ \hline
+			itemStateChanged & - & ItemEvent & - \\ \hline
+		\end{tabular}
+		
+		\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+		controlPanel: GameControlPanel - the game control panel\\
+	    mainFrame: JFrame - the main frame of this game\\
+	    bPause: JButton - a button to pause the game\\
+	    bStartWave: JButton - abutton to start the wave\\
+    	bUpgrade: JButton - a button to upgrade the selected tower\\
+        bSell: JButton - a button to sell the selected tower\\
+        jsSpeed: JSlides - a slide to chage the game speed\\
+        cbStrategies: JComboBox<String> - a list of strategies\\
+        bCritterInfo: JButton - a button to show the critter information\\
+        timer: Timer - the timer\\
+        gamePlayer: Player - the player\\
+        waveStartMoney: int - the wave start money\\ 
+	    waveStartLives: int - the wave start lives\\
+        waveNumber: int - the wave number\\
+        activeCritterIndex: int - the index of active critter\\
+	    drawableEntities: ArrayList<DrawableEntity> - a list of drawable entities\\
+        tdMap: TDMap - the map to use\\
+	    crittersInWave: ArrayList<Critter> - a list of critter on map\\
+	    towersOnMap: ArrayList<Tower> - a list of tower on map\\
+        gamePaused: boolean - is the game paused\\
+        gameOver: boolean - is the game over\\
+        selectedTowerToBuild: String - name of a tower to build\\
+        towerBeingPreviewed: Tower - a tower which is being previewed\\
+        selectedTower: Tower - a tower which is selected\\
+        selectedTile: Maptile - a maptile which is selected\\
+	    artist: Artist\_Swing - a artist helper\\
+        clock: GameClock - a clock helper\\
+	    helpers: ArrayList<Helper> - a list of helpers\\
+        subjects: ArrayList<Subject> - a list of subjects\\
+		
+	   
+		\subsubsection{Environmental Variables}
+		None
+		\subsubsection{Assumptions}
+		Variables should be set before trying to access them
+		
+		\subsubsection{Access Program Semantics}
+		
+		GameController():
+		
+		Input: none
+		
+		Transition: This takes a TDMap object as the map on which to play the game.
+		
+		Output: None
+		
+		Exceptions: None\\
+		\\
+		setPanelAndButtonProperties():
+		
+		Input: none
+		
+		Transition: set this to be our game panel, get all of our Swing objects, and add
+		
+		action listener
+		
+		Output: None
+		
+		Exception: none\\ 
+		\\
+		setInitialValues():
+		
+		Transition: sets the initial values of the variables for the game. Also
+		
+		initializes arrays and gets the instances of the singleton classes.
+		
+		Output: None
+		
+		Exception: None\\ 
+		\\
+		setMainFrame(mFrame):
+		
+		Input: JFrame
+		
+		Transition: sets the JFrame that the game is displayed on
+		
+		Output: None
+		
+		Exception: None\\
+		\\
+		startNewWave():
+		
+		Transition: start a new wave
+		
+		Output: Return Value that was accessed (yReleased)
+		
+		Exception: none\\
+		\\
+		paintComponent(g):
+		
+		Input: Graphics
+		
+		Transition: update and draw all drawableEntities.
+		
+		Output:
+		
+		Exception: none\\
+		\\stateChanged(e):
+		
+		Input: ChangeEvent
+		
+		Transition: set the game speed 
+		
+		Output:
+		
+		Exception: none\\
+		\\
+		setPlaybackSpeed():
+		
+		Transition: This relates to how fast or slow the wave apparently appears to the
+		
+		player.
+		
+		Output: None
+		
+		Exception: none\\
+		\\
+		doPause():
+		
+		Transition: pause the game
+		
+		Output: None
+		
+		Exception: none\\
+		\\
+		doReturnToMainMenu():
+		
+		Transition: return ti the main menu
+		
+		Output: None
+		
+		Exception: none\\
+		\\
+		doStartWave():
+		
+		Transition: unpause and start the wave
+		
+		Output: None
+		
+		Exception: none\\
+		\\
+		doSelectTower():
+		
+		Transition: select the tower
+		
+		Output: None
+		
+		Exception: none\\
+		\\
+		doUpgrade():
+		
+		Transition: upgrade the power
+		
+		Output: None
+		
+		Exception: none\\
+		\\
+		doSell():
+		
+		Transition: sell the tower
+		
+		Output: None
+		
+		Exception: none\\
+		\\
+		doDisplayCritterInfo():
+		
+		Transition: display the critter information
+		
+		Output: None
+		
+		Exception: none\\
+		\\
+		doDisplayCritterInfo(arg0):
+		
+		Input: ActionEvent
+		
+		Transition: response to the acquired action
+		
+		Output: None
+		
+		Exception: none\\
+		\\
+		Draw():
+		
+		Transition: call the repaint method
+		
+		Output: None
+		
+		Exception: none\\
+		\\
+		observerUpdate():
+		
+		Transition: This will update the game whenever one of the subjects (Critters)of
+		
+		the Game Controller is changed. e.g. if a critter dies or a tower is upgraded.
+		
+		Output: None
+		
+		Exception: none\\
+		\\
+		endGame():
+		
+		Transition: Ends the game by disabling buttons, and pausing the clock.
+		
+		Output: None
+		
+		Exception: none\\
+		\\
+		disableAllGameButtons():
+		
+		Transition: disables all of the game buttons
+		
+		Output: None
+		
+		Exception: none\\
+		\\
+		resetPlayerWaveStats():
+		
+		Transition: resets the player's stats (so that a new game can be started with the
+		
+		same instance)
+		
+		Output: None
+		
+		Exception: none\\
+		\\
+		spendMoney():
+		
+		Transition: spends a certain amount of money of the Player
+		
+		Output: None
+		
+		Exception: none\\
+		\\
+		getControlPanel():
+		
+		Transition: return the controlPanel
+		
+		Output: GameControlPanel
+		
+		Exception: none\\
+		\\
+		getPlayPanel():
+		
+		Transition: return the gamePanel
+		
+		Output: MapPanel
+		
+		Exception: none\\
+		\\
+		updateInfoLabelText():
+		
+		Transition: updates the info text
+		
+		Output: None
+		
+		Exception: none\\
+		\\
+		updateTowerInfoText():
+		
+		Transition: updates the tower info text
+		
+		Output: None
+		
+		Exception: none\\
+		\\
+		reactToLeftClick(point):
+		
+		Input: Point
+		
+		Transition: This method selects an existing tower to upgrade it, or puts a new
+		
+		tower on the selected tile, of the desired type. Hence, react to left click
+		
+		Output: None
+		
+		Exception: none\\
+		\\
+		buildTower(t):
+		
+		Input: Tower
+		
+		Transition: builds a tower t and puts it in the drawable entities to be drawn.
+		
+		Output: None
+		
+		Exception: none\\
+		\\
+		updateSelectedTowerInfoAndButtons():
+		
+		Transition: enable upgrades if they have enough money and if the tower isn't at
+		
+		max level, and enable the sell button.
+		
+		Output: None
+		
+		Exception: none\\
+		\\
+		reactToMouseMove(point):
+		
+		Input: Point
+		
+		Transition: react to the mouse move
+		
+		Output: None
+		
+		Exception: none\\
+		\\
+		reactToRightClick(point):
+		
+		Input: Point
+		
+		Transition: a right click clears the current tower selection
+		
+		Output: None
+		
+		Exception: none\\
+		\\
+		itemStateChanged(e):
+		
+		Input: ItemEvent
+		
+		Transition: if our strategies combobox changed, we want to change the strategy of
+		
+		the selected tower
+		
+		Output: None
+		
+		Exception: none\\
+		\\
+		
+		
+	
+	
+	
+\section{MIS of ArtistSwing Module}
+	\subsection{Interface Syntax}
+	    \subsubsection{Exported Constants}
+	    PIXELWIDTH=1000\\
+	    PIXELHEIGHT=700\\
+	    GAMEPIXELHEIGHT = PIXELHEIGHT-100\\
+		\subsubsection{Exported Access Programs}
+		\begin{table}[!htbp]
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			Name & In & Out & Exceptions \\ \hline
+			setGridWidth & int & - & - \\ \hline
+			setGridHeight & int & - & - \\ \hline
+			drawEmptyCircle & Graphics,color,int &  - & - \\ \hline
+			drawFilledCircle & Graphics,color,int &  - & - \\ \hline
+			drawFilledQuad & Graphics,color,int &  - & - \\ \hline
+			drawEmptyQuad & Graphics,color,int &  -& - \\ \hline
+			drawMap & TDMap, Graphics &  - & - \\ \hline
+			drawCritter & Critter,Graphics &  - & - \\ \hline
+			drawTower & Tower,Graphics &  - & - \\ \hline
+			drawShot & Tower,Critter,Graphics &  - & - \\ \hline
+		\end{tabular}
+	\end{table}
+		
+	\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+		width: int\\
+		height: int\\
+		g: graphics\\
+		c: color\\
+		x: int\\
+		y: int\\
+		radius: int\\
+		tdMap: TDMap\\
+		crit: Critter\\
+		tow: Tower\\
+		
+		
+	
+
+		\subsubsection{Access Program Semantics}
+        setGridWidth(width):
+
+		Input: int
+		
+		Transition: set gridwidth to width
+		
+		
+		Exception - None\\
+		\\
+		setGridHeight(Height):
+		
+			Input: int
+			
+			Transition: set gridheight to height
+			 
+			Exception - none\\
+			\\
+		drawEmptyCircle(g, c, x, y, radius):
+			
+			Input: Graphics, Color, int, int, int
+			 
+			Transition - Sets the color, and draws a circle (oval with equal radii)
+			  			 
+			Exception - None\\ 
+			 \\
+		drawFilledCircle(g, c, x, y, radius):
+		
+		    Input: Graphics, Color, int, int, int
+		     
+		    Transition - sets the color, and draws a filled circle (oval with radii equal)
+		     
+		    Exception - None\\ 
+			 \\
+		drawFilledQuad(g, c, x, y, radius):
+		
+		    Input: Graphics, Color, int, int, int
+		     
+		    Transition - sets the color and draws the rectangle
+		     
+		    Exception - None\\ 
+			 \\
+        drawEmptyQuad(g, c, x, y, radius):
+            
+            Input: Graphics, Color, int, int, int
+		    
+		    Transition - sets the color and draws the empty rectangle
+		    
+		    Exception - None\\ 
+			 \\
+		drawMap(tdMap,g):
+		    
+		    Input: TDMap, Graphics
+		    
+		    Transition - draws the map, gets the width and the height, finds the width
+		    
+		    and height of each block, sets the thickness of the line to 1, goes through
+		    
+		    the map in a nested for loop, if we have a path tile, draw it brown, if we
+		    
+		    have a scenery tile, draw it green.
+		    
+		    Exception - None\\ 
+			 \\
+		drawCritter(crit, g):
+		    
+		    Input: Critter, Graphics
+		       
+		    Transition - gets the critter attribuets, drawing the space behind the
+		    
+		    critter, Drawing the actual critter, replace critter with image, replace
+		    
+		    critter with image, for Healthbar: we draw a green rectangle, and then draw a
+		    
+		    red rectangle of size depending on how damaged. we draw a green rectangle,
+		    
+		    and then draw a red rectangle of size depending on how damaged. supposing the
+		    
+		    critter is damaged , we draw the red part.
+		    
+		    Exception - None\\ 
+			 \\
+		drawTower(tow,g):
+		    
+		    Input: Tower, Graphics
+		    
+		    Transition - sets our stroke to be size 1, gets the tile width and height of
+		    
+		    the gamemap, our outline tower is either black or blue (blue if selected), we
+		    
+		    draw the tower's rectangular part, and the outline and then we draw the
+		    
+		    tower's circular part, replace tower with image. for upgrades, we draw a
+		    
+		    circle (in white) around the main circle of the tower for each upgrade level
+		    
+		    16 since max tower level is 4. (so the circle doesn't go out of bounds).
+		    
+		    Exception - None\\ 
+			 \\
+		drawShot:(tow,crit,g):
+		    
+		    Input: Tower, Critter, Graphics
+		    
+		    Transition - gets the tile width and height, get tower color info, we set the
+		    
+		    stroke to be thicker than usually (2) and we draw the line.
+		    
+		    Exception - None\\ 
+			 \\
+        
+             
+
+\section{MIS of CritterGenerator Module}
+	\subsection{Interface Syntax}
+		\subsubsection{Exported Access Programs}
+		
+	\begin{tabular}[pos]{|c|c|c|c|}
+	\hline
+	\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ 
+	\hline
+	getGeneratedCritterWave & int, TDMap & ArrayList<Critter> & - \\ \hline
+					
+	\end{tabular}		
+		
+	\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+		BASECRITTERS: int - the base amount of critters\\
+		MAXWAVE: int - THE maximum wave number
+		\subsubsection{Environmental Variables}
+		None
+		\subsubsection{Assumptions}
+        None
+
+		\subsubsection{Access Program Semantics}
+		getGeneratedCritterWave(wavelevel, exampleMap):
+		
+		Input: int, TDMap
+		
+		Transition: generates a group of critters for a certain wave number. IF it is a 
+		
+		multiple of 5, we do a boss round, with boss (infinity) and grouped (shuriken) 
+		
+		critters.
+		
+		Exception: None
+		\\
+
+\section{MIS of Gameclock Module}
+	\subsection{Interface Syntax}
+		\subsubsection{Exported Access Programs}
+		
+	\begin{tabular}[pos]{|c|c|c|c|}
+	\hline
+	\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ 
+	\hline
+	GameClock & - & - & -\\ \hline
+	getInstance & - & GameClock & -\\ \hline
+	deltaTime & - & int & -\\ \hline
+	setDeltaTime & int & - & -\\ \hline
+	pause & - & - & -\\ \hline
+	unPause & - & - & -\\ \hline
+					
+	\end{tabular}		
+		
+	\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+		dTime: int\\
+		dt: int\\
+		clock: GameClock\\
+		
+
+		\subsubsection{Access Program Semantics}
+	GameClock():
+		
+		Input: None
+		
+		Transition: default tick is 1 second
+		
+		Exception: None\\
+		\\
+	getInstance():
+		
+		Input: None
+		
+		Transition: none
+		
+		Output: return the instance (OF WHICH THERE IS ONLY 1) of the clock
+		
+		Exception: \\
+		\\
+	deltaTime():
+
+		Input: None
+		
+		Transition: None
+		
+		Output: return deltaTime
+		
+		Exception: none\\
+		\\
+	setDeltaTime(dt):
+		
+		Input: int
+		
+		Transition: set deltaTime to dt
+		
+		Exception: none\\
+		\\
+	pause():
+		
+		Input: none
+		
+		Transition: pause by setting deltaTime to 0
+		
+		
+		Exception: none\\
+		\\
+	unPause():
+		
+		Input: none
+		
+		Transition: unpause by setting deltaTime to 1
+
+		Exception: none\\
+		\\
+
+\section{MIS of MouseAndKeyboardHandler Module}
+	\subsection{Interface Syntax}
+		\subsubsection{Exported Access Programs}
+		
+	\begin{tabular}[pos]{|c|c|c|c|}
+	\hline
+	\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ 
+	\hline
+	MouseAndKeyboardHandler & GameController & - & - \\ \hline
+	mouseClicked & MouseEvent & - & - \\ \hline
+	mousePressed & MouseEvent & - & - \\ \hline
+	mouseReleased & MouseEvent & - & - \\ \hline
+	mouseEntered & MouseEvent & - & - \\ \hline
+	mouseExited & MouseEvent & - & - \\ \hline
+	mouseMoved & MouseEvent & - & - \\ \hline
+	mouseDragged & MouseEvent & - & - \\ \hline
+					
+	\end{tabular}		
+		
+	\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+		gameController: GameController - the gameController that we are helping
+		\subsubsection{Environmental Variables}
+		\color{red} external environment \color{black}
+		\subsubsection{Assumptions}
+        None
+
+		\subsubsection{Access Program Semantics}
+		MouseAndKeyboardHandler(gameController):
+		
+		Input: GameController
+		
+		Transition: set the gameController to help
+		
+		Exception: None\\
+		\\
+		mouseClicked(event):
+		
+		Input: MouseEvent
+		
+		Transition: on mouse click, we alert the game controller
+		
+		Exception: None\\
+		\\
+		mousePressed(event):
+		
+		Input: MouseEvent
+		
+		Transition: on mouse prresed, we alert the game controller
+		
+		Exception: None\\
+		\\
+		mouseReleased(event):
+		
+		Input: MouseEvent
+		
+		Transition: on mouse released, we alert the game controller
+		
+		Exception: None\\
+		\\
+		mouseEntered(event):
+		
+		Input: MouseEvent
+		
+		Transition: on mouse entered, we alert the game controller
+		
+		Exception: None\\
+		\\
+		mouseExited(event):
+		
+		Input: MouseEvent
+		
+		Transition: on mouse exited, we alert the game controller
+		
+		Exception: None\\
+		\\
+		mouseMoved(event):
+		
+		Input: MouseEvent
+		
+		Transition: let the game controller know if the mouse is moved
+		
+		Exception: None\\
+		\\
+		mouseDragged(event):
+		
+		Input: MouseEvent
+		
+		Transition: let the game controller know if the mouse is dragged
+		
+		Exception: None
+		\\
+		
+		
+\section{MIS of Critter Module}
+	\subsection{Interface Syntax}
+	    \subsubsection{Exported Constants}
+	    MAXCRITTERLEVEL = 50\\
+	    MAXSPEED = 15\\
+	    CRITTERMESSAGE = "Below is a description of each of the colored critters.\n\n" + "Yellow:\t\t\tBoss Critter. Very hard to kill\n\n" + "White:\t\t\tFast but weak\n\n" + "Red:\t\t\tSlightly below average\n\n" + "Pink:\t\t\tStrong but slow\n\n" + "Orange:\t\t\tCompletely resistant to fire and slow\n\n" + "Cyan:\t\t\tAverage Critter\n\n";  \\
+		\subsubsection{Exported Access Programs}
+		\begin{table}[!htbp]
+		\begin{tabular}{|c|c|c|c|}
+			\hline
+			Name & In & Out & Exceptions \\ \hline
+			critter & int,TDMap & - & - \\ \hline
+			setInitialValues & - & - & - \\ \hline
+			calculateLevelMultiplier & - &  - & - \\ \hline
+			getIndexInPixelPath & - &  double & - \\ \hline
+			getListPixelPath & - &  ArrayList<Point> & - \\ \hline
+			setSlowFactor & double &  -& - \\ \hline
+			getColor & - &  Color & - \\ \hline
+			getPixelPosition & - & point & - \\ \hline
+			hasReachedEnd & - & boolean & - \\ \hline
+			isAlive & - &  boolean & - \\ \hline
+			isBurning & - &  boolean & - \\ \hline
+			getSize & - & int & - \\ \hline
+			getLoot & - &  int & - \\ \hline
+			getImage & - & image & - \\ \hline
+			setHitboxRadius & int &  - & - \\ \hline
+			getHitPoints & - &  double & - \\ \hline
+			getMaxHitPoints & double &  - & - \\ \hline
+			getRawSpeed & - &  double & - \\ \hline
+			setRawSpeed & int &  - & - \\ \hline
+			getLevel & - &  int & - \\ \hline
+			setLevel & int &  - & - \\ \hline
+			isActive & - &  boolean & - \\ \hline
+			setActive & boolean &  - & - \\ \hline
+			getSpeed & - &  double & - \\ \hline
+			updateAndDraw & graphics &  - & - \\ \hline
+			updateHealth & - &  - & - \\ \hline
+			updatePositionAndDraq & graphics &  - & - \\ \hline
+			moveAndDrawCritter & int,graphics &  - & - \\ \hline
+			drawCritter & graphics &  - & - \\ \hline
+			damage & double &  - & - \\ \hline
+			slowCritter & int,double &  - & - \\ \hline
+			damageOverTimeCritter& int,double &  - & - \\ \hline
+		\end{tabular}
+	\end{table}
+		
+	\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+		currHitPoints: double\\
+		maxHitPoints: double\\
+		speed: double\\
+		size: int\\
+		regen: int\\
+		resistance: double\\
+		cColor: Color\\
+		reward: int\\
+		level: int\\
+		name: string\\
+		slowFactor: double\\
+		slowTime: int\\
+		image: Image\\
+		beenSlowedFor: int\\
+		damageOverTimeVal: double\\
+		dotTime: int\\
+		beenDOTFor: int\\
+		burning: boolean\\
+		pixelPosition: Point\\
+		active: boolean\\
+		alive: boolean\\
+		reachedEnd: boolean\\
+		pixelPathToFollow: ArrayList<Point>\\
+		indexInPixelPath: double\\
+		intIndexInPixelPath: int\\
+        g: graphics\\
+		
+		
+		
+	
+
+		\subsubsection{Access Program Semantics}
+        critter(level, m):
+
+		    Input: int, TDMap
+		
+		    Transition: set the level from input, sets the size to scale with the grid 
+		    
+		    size (bigger blocks = bigger critters), sets the initial values of the 
+		    
+		    critter attributes.
+		
+		
+		    Exception - None\\
+		\\
+		setInitialValues():
+		
+			Input: none
+			
+			Transition: sets the initial values of the critter attributes.
+			 
+			Exception - none\\
+			\\
+		calculateLevelMultiplier():
+			
+			Input: none
+			 
+			Transition - calculates the current level multiplier of the critter,This will
+			
+			be called by extending critters, usually
+			  			 
+			Exception - None\\ 
+			 \\
+		getIndexInPixelPath():
+		
+		    Input: none
+		     
+		    Transition: none
+		    
+		    Output: return indexInPixelPath
+		     
+		    Exception - None\\ 
+			 \\
+		getListPixelPath():
+		
+		    Input: none
+		     
+		    Transition: none
+		    
+		    Output: return pixelPathToFollow
+		     
+		    Exception - None\\  
+			 \\
+        setSlowFactor(slowFactor):
+            
+            Input: double
+		    
+		    Transition - sets slow factor
+		    
+		    Exception - None\\ 
+			 \\
+		setDOTAmount(dot):
+		    
+		    Input: double
+		    
+		    Transition: set up amount of dot
+		    
+		    Exception - None\\ 
+			 \\
+		getColor():
+		
+		    Input: none
+		     
+		    Transition: none
+		    
+		    Output: return cColor
+		     
+		    Exception - None\\  
+		    \\
+		getPixelPosition():
+		
+		    Input: none
+		     
+		    Transition: none
+		    
+		    Output: return pixelPosition
+		     
+		    Exception - None\\  
+		    \\
+		hasReachedEnd():
+		
+		    Input: none
+		     
+		    Transition: none
+		    
+		    Output: return reachedEnd
+		     
+		    Exception - None\\  
+		    \\
+        isAlive():
+		
+		    Input: none
+		     
+		    Transition: none
+		    
+		    Output: return alive
+		     
+		    Exception - None\\  
+		    \\
+        isBurning():
+		
+		    Input: none
+		     
+		    Transition: none
+		    
+		    Output: return reachedEnd
+		     
+		    Exception - None\\  
+		    \\
+        getSize():
+		
+		    Input: none
+		     
+		    Transition: none
+		    
+		    Output: return size
+		     
+		    Exception - None\\  
+		    \\
+		getLoot():
+		
+		    Input: none
+		     
+		    Transition: none
+		    
+		    Output: return reward
+		     
+		    Exception - None\\  
+		    \\
+		getImage():
+		
+		    Input: none
+		     
+		    Transition: none
+		    
+		    Output: return image
+		     
+		    Exception - None\\  
+		    \\
+		setHitboxRadius(size):
+		
+		    Input:int
+		     
+		    Transition: set size
+		   
+		     
+		    Exception - None\\  
+		    \\
+		getHitPoints():
+		
+		    Input: none
+		     
+		    Transition: none
+		    
+		    Output: return currHitPoints
+		     
+		    Exception - None\\  
+		    \\
+		getMaxHitPoints():
+		
+		    Input: none
+		     
+		    Transition: none
+		    
+		    Output: return maxHitPoints
+		     
+		    Exception - None\\  
+		    \\
+		getRawSpeed():
+		
+		    Input: none
+		     
+		    Transition: none
+		    
+		    Output: return speed
+		     
+		    Exception - None\\  
+		    \\
+		setRawSpeed(speed):
+		
+		    Input:int
+		     
+		    Transition: set speed
+		   
+		     
+		    Exception - None\\  
+		    \\
+		getLevel():
+		
+		    Input: none
+		     
+		    Transition: none
+		    
+		    Output: return level
+		     
+		    Exception - None\\  
+		    \\
+	    setLevel(level):
+		
+		    Input:int
+		     
+		    Transition: set level
+		   
+		     
+		    Exception - None\\  
+		    \\
+		isActive():
+		
+		    Input: none
+		     
+		    Transition: none
+		    
+		    Output: return active
+		     
+		    Exception - None\\  
+		    \\
+		    
+		setActive(act):
+		
+		    Input:int
+		     
+		    Transition: set active
+		   
+		     
+		    Exception - None\\  
+		    \\  
+		getSpeed():
+		
+		    Input: none
+		     
+		    Transition: none
+		    
+		    Output: return speed
+		     
+		    Exception - None\\  
+		    \\
+		updateAndDraw(g):
+		
+		    Input: graphics
+		     
+		    Transition: we only want to do something if the critter is active. See if we 
+		    
+		    are being slowed, if so, tick the total amount of time we have been slowed 
+		    
+		    for. See if we are being damaged over time, if so, tick the time we have been
+		    
+		    DOT for. update the health of the critter,update the position of the critter 
+		    
+		    and draw it.
+		   
+		     
+		    Exception - None\\  
+		    \\  
+		   
+		updateHealth():
+		    
+		    Input: none
+		       
+		    Transition - updates the health of the critter (called on every "tick" of the clock)
+		    
+		    Exception - None\\ 
+			 \\
+		updatePositionAndDraw(g):
+		    
+		    Input: Graphics
+		    
+		    Transition - updates the position (and draws it), called on every tick of clock
+		    
+		    Exception - None\\ 
+			 \\
+		moveAndDrawCritter(index,g):
+		    
+		    Input: int, Graphics
+		    
+		    Transition - Moves the critter to a given position and draws it as it moves.
+		    
+		    Exception - None\\ 
+			 \\
+	    moveAndDrawCritter(g):
+		    
+		   Input: Graphics
+		    
+		   Transition - draws the critter using the artist class
+		    
+		   Exception - None\\ 
+			 \\
+	    damage(dam):
+		    
+		   Input: double
+		    
+		   Transition - Damages the critter for a certain amount
+		    
+		   Exception - None\\ 
+			 \\
+		slowCritters(Factor, sTime):
+		    
+		   Input: double, int
+		    
+		   Transition - set the slow factor and slow time
+		    
+		   Exception - None\\ 
+			 \\
+	    damageOverTimeCritter(Factor, sTime):
+		    
+		   Input: double, int
+		    
+		   Transition - set the damage over time factor and time
+		    
+		   Exception - None\\ 
+			 \\
+        
+
+\section{MIS of Tower Module}
+	\subsection{Interface Syntax}
+		\subsubsection{Exported Access Programs}
+		
+	\begin{tabular}[pos]{|c|c|c|c|}
+	\hline
+	\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ 
+	\hline
+	Tower & String, Point, ArrayList<Critter> & - & - \\ \hline
+	getSellPrice & - & int & - \\ \hline
+	getUpPrice & - & int & - \\ \hline
+	setStrategy & IStrategy & - & - \\ \hline
+	getPosX & - & int & - \\ \hline
+	getPosY & - & int & - \\ \hline
+	getRange & - & int & - \\ \hline
+	getName & - & String & - \\ \hline
+	getImage & - & Image & - \\ \hline
+	getEnabled & - & boolean & - \\ \hline
+	setEnabled & boolean & - & - \\ \hline
+	getColor & - & Color & - \\ \hline
+	isSelected & - & boolean & - \\ \hline
+	getStrategy & - & IStrategy & - \\ \hline
+	setSelected & boolean & - & - \\ \hline
+	getDefaultStrategy & - & String & - \\ \hline
+	setColor & Color & - & - \\ \hline
+	shootTarget & Criiter, Graphics & - & - \\ \hline
+	upgradeTower & - & - & - \\ \hline
+	
+	\end{tabular}		
+		
+	\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+		MAXTOWERLEVEL: int - the max level of a tower(4)\\
+		DEFAULTSTRATEGY: String - the default strategy to use("Closest")\\
+		position: Point - the position of the tower\\
+		damage: double - the damage of the tower\\
+    	rateOfFire: int - the fire rate of a tower\\
+	    range: int - the fire range of the tower\\
+	    sellPrice: int - the sell price of the tower\\	
+	    upCost: int - the upgrade cost of the tower\\
+	    name: String - name of the strategy\\
+	    level: int - level of the tower\\
+	    tColor: Color - color if the tower\\
+	    shotColor: Color - shoot color of the tower\\
+	    image: Image - model image of the tower\\
+        icon: ImageIcon - the icon of the image\\
+        strategy: IStrategy - the strategy to use\\ 
+        enabled: boolean - if it is enabled\\
+        selected: boolean - if it is selected\\
+		\subsubsection{Environmental Variables}
+		\color{red} external environment \color{black}
+		\subsubsection{Assumptions}
+        None
+
+		\subsubsection{Access Program Semantics}
+		Tower(n, p, crittersOnMap):
+		
+		Input: String, Point, ArrayList<Critter>
+		
+		Transition: constructor to construct a tower
+		
+		Exception: None\\
+		\\
+		getSellPrice():
+		
+		Transition: return the sell price of the tower
+		
+		Output: int
+		
+		Exception: None\\
+		\\
+		getUpPrice(event):
+		
+		Transition: return the upgrade price of the tower
+		
+		Output: int
+		
+		Exception: None\\
+		\\
+		setStrategy(strategy):
+		
+		Input: IStrategy
+		
+		Transition: set the strategy of the tower
+		
+		Exception: None\\
+		\\
+		getPosX():
+		
+		Transition: return the x position of the tower
+		
+		Output: int
+		
+		Exception: None\\
+		\\
+		getPosY():
+		
+		Transition: return the y position of the tower
+		
+		Output: int
+		
+		Exception: None\\
+		\\
+		getRange():
+		
+		Transition: return the attack range of the tower
+		
+		Output: int
+		
+		Exception: None\\
+		\\
+		getName():
+		
+		Transition: return the name of the tower
+		
+		Output: String
+		
+		Exception: None\\
+		\\
+		getImage():
+		
+		Transition: return the image of the tower
+		
+		Output: Image
+		
+		Exception: None\\
+		\\
+		getEnabled():
+		
+		Transition: return if it is enabled
+		
+		Output: boolean
+		
+		Exception: None\\
+		\\
+		setEnabled(state):
+		
+		Input: boolean
+		
+		Transition: set enabled or dis-enabled
+		
+		Exception: None\\
+		\\
+		getColor():
+		
+		Transition: return the color of the tower
+		
+		Output: Color
+		
+		Exception: None\\
+		\\
+		isSelected():
+		
+		Transition: return if it is selected
+		
+		Output: boolean
+		
+		Exception: None\\
+		\\
+		getStrategy():
+		
+		Transition: return the strategy of the tower
+		
+		Output: IStrategy
+		
+		Exception: None\\
+		\\
+		setSelected(s):
+		
+		Input: boolean
+		
+		Transition: set it is been selected or not 
+		
+		Exception: None\\
+		\\
+		getDefaultStrategy():
+		
+		Transition: return the name of default strategy of the tower
+		
+		Output: String
+		
+		Exception: None\\
+		\\
+		setColor(newColor):
+		
+		Input: Color
+		
+		Transition: set the color of the tower
+		
+		Exception: None\\
+		\\
+		shootTarget(target, g):
+		
+		Input: Criiter, Graphics
+		
+		Transition: deals damage to the criiter based on amount of damage of the tower
+		
+		Exception: None\\
+		\\
+		upgradeTower():
+		
+		Transition: upgrades the tower based on properties
+		
+		Exception: None\\
+		\\
+		
+
+\section{MIS of TDMap Module}
+	\subsection{Interface Syntax}
+		\subsubsection{Exported Access Programs}
+		
+	\begin{tabular}[pos]{|c|c|c|c|}
+	\hline
+	\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ 
+	\hline
+	TDMap & - & - & - \\ \hline
+	TDMap & String & - & - \\ \hline
+	initializeGrid & - & - \\ \hline
+	getPIXELWIDTH & - & int & - \\ \hline
+	getPIXELHEIGHT & - & int & - \\ \hline
+	getGridWidth & - & int & - \\ \hline
+	getGridHeight & - & int & - \\ \hline
+	getPointsOfShortestPath & - & ArrayList<Point> & - \\ \hline
+	updateAndDraw & Graphics & - & - \\ \hline
+	print & - & - & - \\ \hline
+	
+					
+	\end{tabular}		
+		
+	\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+		PIXELWIDTH: int - the pixelwidth\\
+		PIXELHEIGHT: int - the pixelheight \\
+		gridWidth: int - the gridthwidth\\
+		gridHeight: int - the gridthheight\\
+		shortestPath: LinkedList<Integer> - the shortest path of the map ;
+		\subsubsection{Environmental Variables}
+		None
+		\subsubsection{Assumptions}
+        None
+
+		\subsubsection{Access Program Semantics}
+		TDMap():
+		
+		Transition: set route and wall image, the grid width and height as default
+		
+		Exception: None\\
+		\\
+		TDMap(add):
+		
+		Input: String
+		
+		Transition: load grass and wall of the map
+		
+		Exception: None\\
+		\\
+		initializeGrid():
+
+		Transition: initializes the gridTile array to be all new MapTile objects
+		
+		Exception: None\\
+		\\
+		getPIXELWIDTH():
+
+		Transition: return the PIXELWIDTH of the map
+		
+		Output: int
+		
+		Exception: None\\
+		\\
+		getPIXELHEIGHT():
+
+		Transition: return the PIXELHEIGHT of the map
+		
+		Output: int
+		
+		Exception: None\\
+		\\
+		getGridWidth():
+
+		Transition: return the GridWidth of the map
+		
+		Output: int
+		
+		Exception: None\\
+		\\
+		getGridHeight():
+
+		Transition: return the GridHeight of the map
+		
+		Output: int
+		
+		Exception: None\\
+		\\
+		getPointsOfShortestPath():
+
+		Transition: return the shortest path of the map
+		
+		Output: ArrayList<Point>
+		
+		Exception: None\\
+		\\
+		updateAndDraw():
+
+		Transition: uses the artist to draw the map
+		
+		Exception: None\\
+		\\
+		print():
+		
+		Transition: This method provides an easy way to print out the grid to display the
+		
+		map. It also prints out the shortest path the critters will take to move from the
+		
+		Start cell to the End Cell.
+		
+		Exception: None
+
+\section{MIS of Point Module}
+		\subsection{Interface Syntax}
+			\subsubsection{Exported Access Programs}
+				\begin{tabular}[pos]{|c|c|c|c|}
+					
+					\hline
+					%	\label
+					\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+					Point & integer, integer & - & -\\ \hline
+					getX & - & int & -\\ \hline
+					getY & - & int & -\\ \hline
+					setX & int & - & -\\ \hline
+					setY & int & - & -\\ \hline
+					setPoint & int, int & - & - \\ \hline
+					equals & Point & boolean & - \\ \hline
+					
+				\end{tabular}
+				
+		\subsection{Interface Semantics}
+			\subsubsection{State Variables}
+			X: int - x value of point\\
+			Y: int - y value of point
+			
+			\subsubsection{Environmental Variables}
+			Not Applicable
+			
+			\subsubsection{Assumptions}
+			Variables should be set before trying to access them
+			
+			\subsubsection{Access Program Semantics}
+			setX(x):
+			
+			Input: Integer of X value
+			
+			Transition: updates the X value of the point
+			
+			Output: none
+			
+			Exception: none\\
+			\\
+			setY(y):
+			Input: Integer of Y value
+			
+			Transition: updates the Y value of the point
+			
+			Output: none
+			Exception: none\\
+			\\
+			getX():
+			
+			Input: none
+			
+			Transition: accesses the X value
+			
+			Output: Returns the X value of the Point
+			
+			Exception: none\\
+			\\
+			getY():
+			
+			Input: none
+			
+			Transition: accesses the Y value
+			
+			Output: Returns the Y value of the point
+			
+			Exception: none\\
+			\\
+			setPoint(x, y):
+			
+			Input: int, int
+			
+			Transition: set both coords of a point at once
+
+			Output: none
+			
+			Exception: none\\
+			\\
+			equals(p):
+			
+			Input: Point
+			
+			Transition: check if one point equals another
+
+			Output: boolean
+			
+			Exception: none\\
+			\\
+
+\section{MIS of Player Module}
+		\subsection{Interface Syntax}
+			\subsubsection{Exported Access Programs}
+				\begin{tabular}[pos]{|c|c|c|c|}
+					
+					\hline
+					%	\label
+					\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ \hline
+					Player & - & - & -\\ \hline
+					getInstance & - & Player & -\\ \hline
+					getLives & - & int & -\\ \hline
+					getMoney & - & int & -\\ \hline
+					setLives & int & - & -\\ \hline
+					setMoney & int & - & - \\ \hline
+					addToMoney & int & - & - \\ \hline
+					takeAwayALife & - & - & - \\ \hline
+					getStartingLives & - & int & - \\ \hline
+					getStartingMoney & - & int & - \\ \hline
+					resetStats & - & - & - \\ \hline
+					
+				\end{tabular}
+				
+		\subsection{Interface Semantics}
+			\subsubsection{State Variables}
+			STARTINGLIVES: int - the default starting live
+			STARTINGMONEY: int - the default starting money
+			lives: int - the current lives
+			money: int - the current money
+			playerInstance: Player - the player
+			
+			\subsubsection{Environmental Variables}
+			\color{red} external environment \color{black}
+			
+			\subsubsection{Assumptions}
+			Variables should be set before trying to access them
+			
+			\subsubsection{Access Program Semantics}
+			Player():
+			
+			Transition: The constructor
+			
+			Output: none
+			
+			Exception: none\\
+			\\
+			getInstance():
+			
+			Transition: return the playerInstance
+			
+			Output: Player
+			
+			Exception: none\\
+			\\
+			getLives():
+			
+			Transition: return the current lives
+			
+			Output: int
+			
+			Exception: none\\
+			\\
+			getMoney():
+			
+			Transition: return the current money
+			
+			Output: int
+			
+			Exception: none\\
+			\\
+			setLives(l):
+			
+			Input: int
+			
+			Transition: set the value of lives
+			
+			Exception: none\\
+			\\
+		    setMoney(m):
+			
+			Input: int
+			
+			Transition: set the value of money
+			
+			Exception: none\\
+			\\
+			addToMoney(moneyToAdd):
+			
+			Input: int
+			
+			Transition: add money to the player
+			
+			Exception: none\\
+			\\
+			takeAwayALife():
+			
+			Transition: reduce the player's lives by one
+			
+			Exception: none\\
+			\\
+			getStartingLives():
+			
+			Transition: return the default starting lives
+			
+			Output: int
+			
+			Exception: none\\
+			\\
+			getStartingMoney():
+			
+			Transition: return the default starting money
+			
+			Output: Player
+			
+			Exception: none\\
+			\\
+			resetStats():
+			
+			Transition: reset the stats of the player
+			
+			Output: Player
+			
+			Exception: none\\
+			\\
+		
+
+\section{MIS of Closest Module}
+	\subsection{Interface Syntax}
+		\subsubsection{Exported Access Programs}
+		
+	\begin{tabular}[pos]{|c|c|c|c|}
+	\hline
+	\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ 
+	\hline
+	Critter findTarget & Tower, ArrayList<Critter> & Critter & - \\ \hline
+	toString & - & string & - \\ \hline
+					
+	\end{tabular}		
+		
+	\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+		tower: Tower\\
+	    g1: ArrayList<Critter>\\
+		\subsubsection{Environmental Variables}
+		None
+		\subsubsection{Assumptions}
+        None
+
+		\subsubsection{Access Program Semantics}
+		findTarget(tower, g1):
+		
+		Input: Tower, ArrayList<Critter>
+		
+		Transition: finds the target based on who is closest, set arbitrary large number 
+		
+		that will never be reached
+		
+		Output: return closest enemy
+		
+		Exception: None\\
+		\\
+		toString():
+		
+		Input: none
+		
+		Transition: none
+		
+		Output: return closest 
+		
+		Exception: None\\
+		\\
+
+\section{MIS of Farthest Module}
+	\subsection{Interface Syntax}
+		\subsubsection{Exported Access Programs}
+		
+	\begin{tabular}[pos]{|c|c|c|c|}
+	\hline
+	\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ 
+	\hline
+	Critter findTarget & Tower, ArrayList<Critter> & Critter & - \\ \hline
+	toString & - & string & - \\ \hline
+					
+	\end{tabular}		
+		
+	\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+		tower: Tower\\
+	    g1: ArrayList<Critter>\\
+		\subsubsection{Environmental Variables}
+		None
+		\subsubsection{Assumptions}
+        None
+
+		\subsubsection{Access Program Semantics}
+		findTarget(tower, g1):
+		
+		Input: Tower, ArrayList<Critter>
+		
+		Transition: finds the Critter that is farthest along the path
+		
+		Output: return farthest enemy
+		
+		Exception: None\\
+		\\
+		toString():
+		
+		Input: none
+		
+		Transition: none
+		
+		Output: return Farthest 
+		
+		Exception: None\\
+		\\      
+\section{MIS of Fastest Module}
+	\subsection{Interface Syntax}
+		\subsubsection{Exported Access Programs}
+		
+	\begin{tabular}[pos]{|c|c|c|c|}
+	\hline
+	\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ 
+	\hline
+	Critter findTarget & Tower, ArrayList<Critter> & Critter & - \\ \hline
+	toString & - & string & - \\ \hline
+					
+	\end{tabular}		
+		
+	\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+		tower: Tower\\
+	    g1: ArrayList<Critter>\\
+		\subsubsection{Environmental Variables}
+		None
+		\subsubsection{Assumptions}
+        None
+
+		\subsubsection{Access Program Semantics}
+		findTarget(tower, g1):
+		
+		Input: Tower, ArrayList<Critter>
+		
+		Transition: finds target that is fastest
+		
+		Output: return fastest enemy
+		
+		Exception: None\\
+		\\
+		toString():
+		
+		Input: none
+		
+		Transition: none
+		
+		Output: return Fastest
+		
+		Exception: None\\
+		\\
+\section{MIS of Strongest Module}
+	\subsection{Interface Syntax}
+		\subsubsection{Exported Access Programs}
+		
+	\begin{tabular}[pos]{|c|c|c|c|}
+	\hline
+	\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ 
+	\hline
+	Critter findTarget & Tower, ArrayList<Critter> & Critter & - \\ \hline
+	toString & - & string & - \\ \hline
+					
+	\end{tabular}		
+		
+	\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+		tower: Tower\\
+	    g1: ArrayList<Critter>\\
+		\subsubsection{Environmental Variables}
+		\color{red} external environment \color{black}
+		\subsubsection{Assumptions}
+        None
+
+		\subsubsection{Access Program Semantics}
+		findTarget(tower, g1):
+		
+		Input: Tower, ArrayList<Critter>
+		
+		Transition: finds the strongest enemy
+		
+		Output: return Strongest enemy
+		
+		Exception: None\\
+		\\
+		toString():
+		
+		Input: none
+		
+		Transition: none
+		
+		Output: return Strongest
+		
+		Exception: None\\
+		\\
+\section{MIS of Weakest Module}
+	\subsection{Interface Syntax}
+		\subsubsection{Exported Access Programs}
+		
+	\begin{tabular}[pos]{|c|c|c|c|}
+	\hline
+	\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ 
+	\hline
+	Critter findTarget & Tower, ArrayList<Critter> & Critter & - \\ \hline
+	toString & - & string & - \\ \hline
+					
+	\end{tabular}		
+		
+	\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+		tower: Tower\\
+	    g1: ArrayList<Critter>\\
+		\subsubsection{Environmental Variables}
+		None
+		\subsubsection{Assumptions}
+        None
+
+		\subsubsection{Access Program Semantics}
+		findTarget(tower, g1):
+		
+		Input: Tower, ArrayList<Critter>
+		
+		Transition: finds the Weakest enemy
+		
+		Output: return Weakest enemy
+		
+		Exception: None\\
+		\\
+		toString():
+		
+		Input: none
+		
+		Transition: none
+		
+		Output: return Weakest
+		
+		Exception: None\\
+		\\
+
+		
+\section{MIS of GameApplicationFrame Module}
+	\subsection{Interface Syntax}
+	\subsubsection{Exported Constants}
+	    PIXELWIDTH=ArtistSwing.PIXELWIDTH\\
+	    PIXELHEIGHT=ArtistSwing.PIXELHEIGHT\\
+	    APPNAME = "Group 30 Tower Defense"\\
+	    TIMEOUT = 30\\
+		\subsubsection{Exported Access Programs}
+		
+	\begin{tabular}[pos]{|c|c|c|c|}
+	\hline
+	\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ 
+	\hline
+	GameApplicationFrame & TDMap & - & - \\ \hline
+	init & - & - & - \\ \hline
+	
+					
+	\end{tabular}		
+		
+	\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+		controlPanel: GameControlPanel\\
+	    mapPanel: MapPanel\\
+	    gameController: GameController\\
+	    tdMap: TDMap\\
+		\subsubsection{Environmental Variables}
+		None
+		\subsubsection{Assumptions}
+        None
+
+		\subsubsection{Access Program Semantics}
+		GameApplicationFrame(tdMap):
+		
+		Input: TDMap
+		
+		Transition: set the tdmap
+		
+		Exception: None\\
+		\\
+		init():
+		
+		Input: none
+		
+		Transition: set the Frame properties, get the control and map panels, add them to
+		
+		the frame, set the x button as the default close operation
+		
+		Exception: None\\
+		\\	
+\section{MIS of GameState Module}
+	\subsection{Interface Syntax}
+	
+		\subsubsection{Exported Access Programs}
+		
+	\begin{tabular}[pos]{|c|c|c|c|}
+	\hline
+	\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ 
+	\hline
+	init & GameContainer, StateBasedGame & - & - \\ \hline
+	render & GameContainer, StateBasedGame, Graphics & - & - \\ \hline
+	update & GameContainer, StateBasedGame, init & - & - \\ \hline
+	getID & - & int & - \\ \hline
+	
+	
+					
+	\end{tabular}		
+		
+	\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+		mapToLoad: TDMap\\
+	    arg0: GameContainer\\
+	    arg1: StateBasedGame\\
+	    g: Graphics\\
+	    delta: init\\
+		\subsubsection{Environmental Variables}
+		\color{red} external environment \color{black}
+		\subsubsection{Assumptions}
+        None
+
+		\subsubsection{Access Program Semantics}
+		init(arg0, arg1):
+		
+		Input: GameContainer, StateBasedGame
+		
+		Transition: \color{red} set main menu image, set background image and set background music \color{black}
+		
+		Exception: None\\
+		\\
+		render(arg0, arg1, g):
+		
+		Input: GameContainer, StateBasedGame, Graphics
+		
+		Transition: draw string at interface
+		
+		Exception: None\\
+		\\	
+		update(arg0, arg1, delta):
+		
+		Input: GameContainer, StateBasedGame, init
+		
+		Transition: set default map
+		
+		Exception: None\\
+		\\
+		getID():
+		
+		Input: none
+		
+		Transition: none
+		
+		Output: return 1
+		
+		Exception: None\\
+		\\
+\section{MIS of MainMenu Module}
+	\subsection{Interface Syntax}
+	
+		\subsubsection{Exported Access Programs}
+		
+	\begin{tabular}[pos]{|c|c|c|c|}
+	\hline
+	\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ 
+	\hline
+	init & GameContainer, StateBasedGame & - & - \\ \hline
+	render & GameContainer, StateBasedGame, Graphics & - & - \\ \hline
+	update & GameContainer, StateBasedGame, init & - & - \\ \hline
+	getID & - & int & - \\ \hline
+	
+	
+					
+	\end{tabular}		
+		
+	\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+		mapToLoad: TDMap\\
+	    container: GameContainer\\
+	    arg1: StateBasedGame\\
+	    g: Graphics\\
+	    delta: init\\
+	    MainMenu: image\\
+	    playNow: image\\
+	    exitGame: image\\
+	    mapToLoad: image\\
+	    
+		\subsubsection{Environmental Variables}
+		None
+		\subsubsection{Assumptions}
+        None
+
+		\subsubsection{Access Program Semantics}
+		init(container, arg1):
+		
+		Input: GameContainer, StateBasedGame
+		
+		Transition: set image to mainMenu, set image to playNow, set image to exitGame
+		
+		Exception: None\\
+		\\
+		render(arg0, arg1, g):
+		
+		Input: GameContainer, StateBasedGame, Graphics
+		
+		Transition: draw string at interface, draw mainMenu image at interface, draw 
+		
+		playNow image at interface, draw exitGame image at interface
+		
+		Exception: None\\
+		\\	
+		update(arg0, arg1, delta):
+		
+		Input: GameContainer, StateBasedGame, init
+		
+		Transition: set default map, set mapToLoad = new TDMap("res/Try1.TDMap"), set new
+		
+		GameApplicationFrame(mapToLoad).
+		
+		Exception: None\\
+		\\
+		getID():
+		
+		Input: none
+		
+		Transition: none
+		
+		Output: return 0
+		
+		Exception: None\\
+		\\	
+\section{MIS of MenuApplicationFrame Module}
+	\subsection{Interface Syntax}
+	    \subsubsection{Exported Constants}
+	    PIXELWIDTH=460\\
+	    PIXELHEIGHT=200\\
+	    APPNAME = "Main Menu"\\
+	    TIMEOUT = 30\\
+	    bPlay = Play a game\\
+	    bCreateMap = Create a map\\
+	    bQuit = Quit\\
+	    bLoadMap = Load a map\\
+	    bDefault = Default\\
+	    lblMapToLoad = MAP: Default\\
+		\subsubsection{Exported Access Programs}
+		
+	\begin{tabular}[pos]{|c|c|c|c|}
+	\hline
+	\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ 
+	\hline
+	MenuApplicationFrame & - & - & - \\ \hline
+	actionPerformed & ActionEvent& - & - \\ \hline
+	init & - & - & - \\ \hline
+	setMapName & string & - & - \\ \hline
+	
+	
+					
+	\end{tabular}		
+		
+	\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+		mapToLoad: TDMap\\
+	    fc: JFileChooser\\
+	    mainPanel: JPanel\\
+	    bPlay: JButton\\
+	    bCreateMap: JButton\\
+	    bQuit: JButton\\
+	    bLoadMap: JButton\\
+	    bDefault: JButton\\
+	    lblMapToLoad: JLabel\\
+	    e: ActionEvent\\
+	    
+		\subsubsection{Environmental Variables}
+		None
+		\subsubsection{Assumptions}
+        None
+
+		\subsubsection{Access Program Semantics}
+		MenuApplicationFrame():
+		
+		Input: none
+		
+		Transition: set default map, set all button application
+		
+		Exception: None\\
+		\\
+		actionPerformed(e):
+		
+		Input: ActionEvent
+		
+		Transition: set every button to correspond perfermed action
+		
+		Exception: None\\
+		\\	
+		init():
+		
+		Input: none
+		
+		Transition: set panel properties, set mainPanel.setBackground(Color.BLACK), set 
+		
+		mainPanel.add(bCreateMap), set the Frame properties, set the x button as the 
+		
+		default close operation
+		
+		Exception: None\\
+		\\
+		setMapName(name):
+		
+		Input: string
+		
+		Transition: add name to map
+		
+		Exception: None\\
+		\\
+\section{MIS of SetupClass Module}
+	\subsection{Interface Syntax}
+		\subsubsection{Exported Access Programs}
+		
+	\begin{tabular}[pos]{|c|c|c|c|}
+	\hline
+	\textbf{Name}& \textbf{In} & \textbf{Out} & \textbf{Exceptions} \\ 
+	\hline
+	etupClass & string & - & - \\ \hline
+	initStatesList & GameContainer& - & - \\ \hline
+
+					
+	\end{tabular}		
+		
+	\subsection{Interface Semantics}
+		\subsubsection{State Variables}
+		title: string\\
+		container: GameContainer\\ 
+	    
+		\subsubsection{Environmental Variables}
+		None
+		\subsubsection{Assumptions}
+        None
+
+		\subsubsection{Access Program Semantics}
+		SetupClass():
+		
+		Input: string
+		
+		Transition: set up title 
+		
+		Exception: None\\
+		\\
+		initStatesList(container):
+		
+		Input: GameContainer
+		
+		Transition: initial mainmenu and gamestate
+		
+		Exception: None\\
+		\\	
+		
+\end{document}

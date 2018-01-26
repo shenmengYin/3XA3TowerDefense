@@ -1,0 +1,438 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{mdframed}
+\usepackage{enumerate}
+
+\newmdenv[linecolor=black]{reqbox}
+
+\begin{document}
+
+
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+        
+        \Huge
+        \textbf{Requirement Document}
+        
+        \vspace{0.5cm}
+        \LARGE
+        SFWRENG 3XA3
+        
+        \vspace{1.5cm}
+        
+        \Large
+        Group 30, Team 30
+		\\ Alan Yin (yins1)
+		\\ Huajie Zhu (zhuh5)
+		\\ Junni Pan (panj10)
+        
+        \vspace{1.5cm}
+        
+        \Large
+        October 5, 2017
+        
+    \end{center}
+\end{titlepage}
+
+\newpage
+\tableofcontents
+\listoftables
+\listoffigures
+
+
+\newpage
+\section{Project Driver}
+\subsection{The Purpose of The Project}
+The purpose of this project is to create a Tower Defence Game with graphic effects. The original game is fairly simple and crude. We are going to modify it by adding new features and graphic effects, to make it become a lively game.
+
+
+\subsection{The Client, the Customer, and Other Stakeholders}
+The client of the project is Professor Asghar Bokhari. The customers of the project are casual gamers and any people who would like to enjoy a less time consuming game during their leisure time. Other stakeholders include current development team and any future developers, since current developers can obtain knowledge on software project developing, and future developers can be benefit from this open source project. 
+
+\subsection{Constraints}
+\subsubsection{Development Constraints}
+The project is going to be developed by Java in Eclipse IDE. So team members can cooperate with each other no matter what operating they are using.
+
+\subsubsection{Operation Constraints}
+The game can run in any platform that supports Java. (E.g. Windows OS, Mac OS, Linux.)
+
+\subsubsection{Schedule Constraints}
+This project must be completed by December 2017, and the development process will specifically follow the Gantt Chart.
+
+\subsubsection{Budget Constraints}
+This is a open source project, so the budget will be \$0 for both developers and users.
+
+
+\subsection{Naming Conventions and Terminology}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{ | m{5em} | m{10cm}|} 
+\hline
+Term & Description \\ 
+\hline
+API & API stands for application program interface. It is a set of routines, protocols, and tools for building software applications. \\ 
+\hline
+LWJGL & LWJGL stands for Lightweight Java Game Library. It is a Java library that enables cross-platform access to popular native APIs. \\ 
+\hline
+Health Points & The amount of health that a player has. The player stays alive if health points is greater than 0. \\ 
+\hline
+Damage & The amount of health points an attacker can take away from the player. \\ 
+\hline
+Map & Map determines where towers can be placed, and the route where attackers will follow.  \\
+\hline
+\end{tabular}
+\caption{Terminologies and corresponding descriptions}
+\label{table:1}
+\end{table}
+
+
+\section{Functional Requirements}
+\subsection{The Scope of the Work}
+This project is simulating an entire software developing process. All the documentations, along with the program are going to be submitted before December 6, 2017. Deliverables include Project Approval Doc, Problem Statement, Development Plan, Requirement Document, Proof of Concept Demonstration, Test Plan, Design \& Document,  Revision 0 Demonstration, Final Demonstration, Peer Evaluation, and Final Documentation.
+
+\subsection{The Scope of the Product}
+The product is a simple tower defense game. The game allows players to construct towers on the map, to defend the enemies who are supposed to attack through a pre-determined route. The product is implemented in Java. It has all the basic features which other existing tower defense games already have, including elimination rewards and upgradable towers. The graphic is easily understood by the users. 
+
+\newpage
+\subsection{Functional Requirements}
+
+\begin{figure}[htp]
+\centering
+\includegraphics[width=10cm]{contextDiagram.jpg}
+\caption{Context Diagram}
+\label{fig:contextDiagram}
+\end{figure}
+
+\begin{reqbox}
+%---
+\begin{tabular}{ccc}Requirement \#: 1
+\end{tabular} \\
+%---
+\textbf{Description:} The game will have an unambiguous main menu to guide the player\\
+\textbf{Rationale:} Only one picture and one button for start the game\\
+\textbf{Originator:} Junni Pan -- Developer \\
+\textbf{Fit Criterion:} Over 70\% of the players know exactly the meaning of each button and operation\\
+%---
+\begin{tabular}{ll}
+\textbf{Customer Satisfaction:} 5 & \textbf{Customer Dissatisfaction:} 5 \\
+\textbf{Priority:} High & \textbf{Conflicts:} None\\
+\end{tabular} \\
+%---  
+\textbf{History:} Created October 5, 2017
+%--
+\end{reqbox}
+
+
+\begin{reqbox}
+%---
+\begin{tabular}{ccc}Requirement \#: 2
+\end{tabular} \\
+%---
+\textbf{Description:} Four types of towers and six types of enemies have their distinct models\\
+\textbf{Rationale:} Particular models can show the strength and ability of the towers and enemies\\
+\textbf{Originator:} Junni Pan -- Developer \\
+\textbf{Fit Criterion:} Over 50\% of the players can clearly understand the basic properties of towers and enemies\\
+%---
+\begin{tabular}{ll}
+\textbf{Customer Satisfaction:} 5 & \textbf{Customer Dissatisfaction:} 5 \\
+\textbf{Priority:} High & \textbf{Conflicts:} None\\
+\end{tabular} \\
+%---  
+\textbf{History:} Created October 5, 2017
+%--
+\end{reqbox}
+
+
+\begin{reqbox}
+%---
+\begin{tabular}{ccc}Requirement \#: 3
+\end{tabular} \\
+%---
+\textbf{Description:} The trajectory(4 types) and tower upgrade(3 levels) shall have graphic effects\\
+\textbf{Rationale:} The player need some visual feedback from the game\\
+\textbf{Originator:} Junni Pan -- Developer \\
+\textbf{Fit Criterion:} The player can understand the game process by visual feedback\\
+%---
+\begin{tabular}{ll}
+\textbf{Customer Satisfaction:} 5 & \textbf{Customer Dissatisfaction:} 5 \\
+\textbf{Priority:} High & \textbf{Conflicts:} None\\
+\end{tabular} \\
+%---  
+\textbf{History:} Created October 5, 2017
+%--
+\end{reqbox}
+
+
+\begin{reqbox}
+%---
+\begin{tabular}{ccc}Requirement \#: 4
+\end{tabular} \\
+%---
+\textbf{Description:} Three difficulties for players with different level of skills.\\
+\textbf{Rationale:} The players can choose easy, normal or crazy mode base on their level of skills.\\
+\textbf{Originator:} Junni Pan -- Developer \\
+\textbf{Fit Criterion:} Over 80\% of the players can find a acceptable difficulty.\\
+%---
+\begin{tabular}{ll}
+\textbf{Customer Satisfaction:} 5 & \textbf{Customer Dissatisfaction:} 5 \\
+\textbf{Priority:} High & \textbf{Conflicts:} None\\
+\end{tabular} \\
+%---  
+\textbf{History:} Created October 5, 2017
+%--
+\end{reqbox}
+
+
+
+\newpage
+\section{Nonfunctional Requirements}
+
+
+\subsection{Look and Feel Requirements}
+\begin{reqbox}
+%---
+\begin{tabular}{ccc}Requirement \#: 1
+\end{tabular} \\
+%---
+\textbf{Description:} The game has a start menu with four buttons, the game window has a 50*30 map, 8 buttons for operations and a drop down menu for selection.\\
+\textbf{Rationale:} The UI is simple and clear, which reduces the learning difficulty for users.\\
+\textbf{Originator:} Alan Yin -- Team Leader \\
+\textbf{Fit Criterion:} No negative feedback received on user interface.\\
+%---
+\begin{tabular}{ll}
+\textbf{Customer Satisfaction:} 5 & \textbf{Customer Dissatisfaction:} 5 \\
+\textbf{Priority:} High & \textbf{Conflicts:} None\\
+\end{tabular} \\
+%---  
+\textbf{History:} Created October 5, 2017
+%--
+\end{reqbox}
+
+
+\subsection{Usability and Humanity Requirements}
+\begin{reqbox}
+%---
+\begin{tabular}{ccc}Requirement \#: 2
+\end{tabular} \\
+%---
+\textbf{Description:} The game uses only symbols and icons for building, selling and upgrading towers instead of text.\\
+\textbf{Rationale:} Symbols and icons are not language dependent, and they can be easily understood by any users such as children or non-English speakers.\\
+\textbf{Originator:} Alan Yin -- Team Leader \\
+\textbf{Fit Criterion:} No negative feedback received because of language or wording confusions.\\
+%---
+\begin{tabular}{ll}
+\textbf{Customer Satisfaction:} 5 & \textbf{Customer Dissatisfaction:} 5 \\
+\textbf{Priority:} Medium & \textbf{Conflicts:} None\\
+\end{tabular} \\
+%---  
+\textbf{History:} Created October 5, 2017
+%--
+\end{reqbox}
+
+
+\newpage
+\begin{reqbox}
+%---
+\begin{tabular}{ccc}Requirement \#: 3
+\end{tabular} \\
+%---
+\textbf{Description:} The game should be feasible to run on any platform (Windows OS, Mac OS or Linux) that supports Java.\\
+\textbf{Rationale:} More users can be benefited by the software if it is made to be cross-platform.\\
+\textbf{Originator:} Alan Yin -- Team Leader \\
+\textbf{Fit Criterion:} The game supports execution on Windows, Linux and MacOS.\\
+%---
+\begin{tabular}{ll}
+\textbf{Customer Satisfaction:} 5 & \textbf{Customer Dissatisfaction:} 5 \\
+\textbf{Priority:} High & \textbf{Conflicts:} None\\
+\end{tabular} \\
+%---  
+\textbf{History:} Created October 5, 2017
+%--
+\end{reqbox}
+
+
+
+\subsection{Performance Requirements}
+
+
+\begin{reqbox}
+%---
+\begin{tabular}{ccc}Requirement \#: 4
+\end{tabular} \\
+%---
+\textbf{Description:} The game will not crash after running all the 10 rounds.\\
+\textbf{Rationale:} The program is supposed to run smoothly without any unexpected crashes.\\
+\textbf{Originator:} Huajie Zhu -- Tester \\
+\textbf{Fit Criterion:} The program passes all the test cases before publication.\\
+%---
+\begin{tabular}{ll}
+\textbf{Customer Satisfaction:} 5 & \textbf{Customer Dissatisfaction:} 5 \\
+\textbf{Priority:} High & \textbf{Conflicts:} None\\
+\end{tabular} \\
+%---  
+\textbf{History:} Created October 5, 2017
+%--
+\end{reqbox}
+
+
+
+\subsection{Safety and Healthy Requirements}
+
+
+\begin{reqbox}
+%---
+\begin{tabular}{ccc}Requirement \#: 5
+\end{tabular} \\
+%---
+\textbf{Description:} The game reminds the player about safety and healthy concerns related to long time gaming.\\
+\textbf{Rationale:} The software is aimed to provide entertainment solution, and it is necessary to prevent players from getting addicted. \\
+\textbf{Originator:} Alan Yin -- Team Leader \\
+\textbf{Fit Criterion:} Players' length of gameplay does not exceed 1 hour.\\
+%---
+\begin{tabular}{ll}
+\textbf{Customer Satisfaction:} 5 & \textbf{Customer Dissatisfaction:} 5 \\
+\textbf{Priority:} Medium & \textbf{Conflicts:} None\\
+\end{tabular} \\
+%---  
+\textbf{History:} Created October 5, 2017
+%--
+\end{reqbox}
+
+
+\subsection{Operational and Environmental Requirements}
+
+\begin{reqbox}
+%---
+\begin{tabular}{ccc}Requirement \#: 6
+\end{tabular} \\
+%---
+\textbf{Description:} The game could be distributed as a jar file\\
+\textbf{Rationale:} Jar file can run on any device that supports Java Virtual Machine.\\
+\textbf{Originator:} Huajie Zhu -- Tester \\
+\textbf{Fit Criterion:} The game can run on different platforms without compatibility issue.\\
+%---
+\begin{tabular}{ll}
+\textbf{Customer Satisfaction:} 5 & \textbf{Customer Dissatisfaction:} 5 \\
+\textbf{Priority:} Medium & \textbf{Conflicts:} None\\
+\end{tabular} \\
+%---  
+\textbf{History:} Created October 5, 2017
+%--
+\end{reqbox}
+
+
+\subsection{Installability Requirements}
+
+\begin{reqbox}
+%---
+\begin{tabular}{ccc}Requirement \#: 7
+\end{tabular} \\
+%---
+\textbf{Description:} The game size is compact and has executable jar file not exceed 30 MB.\\
+\textbf{Rationale:} A compact size can facilitate the users by reducing their download and installation time.\\
+\textbf{Originator:} Huajie Zhu -- Tester \\
+\textbf{Fit Criterion:} The final file size does not exceed 30 MB.\\
+%---
+\begin{tabular}{ll}
+\textbf{Customer Satisfaction:} 5 & \textbf{Customer Dissatisfaction:} 5 \\
+\textbf{Priority:} Medium & \textbf{Conflicts:} None\\
+\end{tabular} \\
+%---  
+\textbf{History:} Created October 5, 2017
+%--
+\end{reqbox}
+
+
+\newpage
+\subsection{Maintainability and Support Requirements}
+
+\begin{reqbox}
+%---
+\begin{tabular}{ccc}Requirement \#: 8
+\end{tabular} \\
+%---
+\textbf{Description:} Create API documentation by using Javadoc for easy maintainability.\\
+\textbf{Rationale:} Providing proper documentations on the program for future maintenance and development.\\
+\textbf{Originator:} Huajie Zhu -- Tester \\
+\textbf{Fit Criterion:} The documentations are readable and easily understandable by any developer with Java knowledge.\\
+%---
+\begin{tabular}{ll}
+\textbf{Customer Satisfaction:} 5 & \textbf{Customer Dissatisfaction:} 5 \\
+\textbf{Priority:} Medium & \textbf{Conflicts:} None\\
+\end{tabular} \\
+%---  
+\textbf{History:} Created October 5, 2017
+%--
+\end{reqbox}
+
+
+\subsection{Security Requirements}
+Not applicable for this project.
+
+
+\subsection{Cultural and Political Requirements}
+Not applicable for this project.
+
+
+
+\subsection{Legal Requirements}
+
+\begin{reqbox}
+%---
+\begin{tabular}{ccc}Requirement \#: 9
+\end{tabular} \\
+%---
+\textbf{Description:} Use open source tool to develop the program.\\
+\textbf{Rationale:} Using correct licensing and citation to avoid potential legal issues.\\
+\textbf{Originator:} Alan Yin -- Team Leader \\
+\textbf{Fit Criterion:} Both the original project and tools used are open source.\\
+%---
+\begin{tabular}{ll}
+\textbf{Customer Satisfaction:} 5 & \textbf{Customer Dissatisfaction:} 5 \\
+\textbf{Priority:} High & \textbf{Conflicts:} None\\
+\end{tabular} \\
+%---  
+\textbf{History:} Created October 5, 2017
+%--
+\end{reqbox}
+
+
+\section{Project Issues}
+
+\subsection{Open Issues}
+The implementation of LWJGL is hard to collaborate with current project due to limit of knowledge. The project team is trying hard to make these two parts work together, in order to modify the game using LWJGL. This is currently the major problem.
+
+\subsection{Off-the-Shelf Solutions}
+If the LWJGL is too difficult to implement, the game could be modified by Java Swing interface or any applicable alternatives. But it is the goal for the development team to make use of LWJGL if possible.
+
+\subsection{New Problems}
+Currently, there is no further problems.
+
+\subsection{Tasks}
+\begin{center}
+\begin{table}[!hpb]
+    \begin{tabular}{|c|c|}
+	\hline
+	Tasks & Estimated Time of Completion \\ \hline
+	Modified Tower and Enemies  & Oct 15, 2017 \\ \hline
+	Modified Trajectory and Tower Upgrade & Oct 22, 2017 \\ \hline
+	Design \& Implement UI & Oct 29, 2017 \\ \hline
+	Test \& Debug & Nov 13, 2017 \\ \hline
+	Product Release \& Final Demonstration & Nov 27, 2017 \\ \hline
+    \end{tabular}
+    \caption{Tasks} 
+\end{table}
+\end{center}
+
+
+
+\subsection{Risks}
+The project may not complete by the estimated time because of the lacking knowledge on LWJGL. Also, the map creator may cause program malfunction if the players create maps with extreme cases.
+
+
+
+\end{document}

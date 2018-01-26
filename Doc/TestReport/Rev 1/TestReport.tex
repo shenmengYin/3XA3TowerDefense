@@ -1,0 +1,674 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{mdframed}
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage[T1]{fontenc}
+\usepackage{babel}
+\usepackage{textcomp}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{placeins}
+\usepackage{graphicx}
+\newmdenv[linecolor=black]{reqbox}
+
+
+\begin{document}
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+        
+        \Huge
+        \textbf{Test Report}
+        
+        \vspace{0.5cm}
+        \LARGE
+        SFWRENG 3XA3
+        
+        \vspace{1.5cm}
+        
+\Large
+        Group 30
+		\\ Alan Yin (yins1)
+		\\ Huajie Zhu (zhuh5)
+		\\ Junni Pan (panj10)
+        
+        \vspace{1.5cm}
+        
+        \Large
+        December 6, 2017
+        
+    \end{center}
+\end{titlepage}
+\newpage
+\tableofcontents
+\listoftables
+\listoffigures
+
+
+\newpage
+\section{Major Revision History}
+\begin{table}[h!]
+\centering
+\begin{tabular}{ | m{10em} | m{1.5cm}| m{5cm}|} 
+\hline
+Date & Version & Note \\ 
+\hline
+Dec 01, 2017 & 1.0 & draft \\ 
+\hline
+Dec 03, 2017 & 1.1 & Delete improper test cases \\ 
+\hline
+Dec 05, 2017 & 1.2 & Complete rev0 of test report \\ 
+\hline
+Dec 06, 2017 & 1.3 & Final update to rev1 of test report \\ 
+\hline
+\end{tabular}
+\end{table}
+
+
+\section{Introduction}
+	\subsection{Purpose}
+	This software testing is aimed to verify the functionality of the whole project, and to identify any potential bugs and malfunctions which may occur in program compilation and running time. By completing the test report, we would like to prove that our program for the project satisfies the original requirements specified in SRS.
+
+	\subsection{Scope}
+	This Test Report includes the results for testing all the major functionality and features specified in requirement documents. It includes a variety of test cases to ensure that the Tower Defense Game functions properly, including programming language syntax, game algorithms, user interface, animations and audios, and unit tests for each class and methods. A separate test for the whole program will also be included for integration testing.
+	
+
+
+\newpage	
+
+
+\begin{enumerate}
+
+\section{Functional Requirements Evaluation}
+
+\subsection{User Input and the Response}
+					
+    \item{FS-IR-1: Main Menu Button}
+    
+    Type: Functional, Dynamic, Manual
+					
+	Initial State: The game opened successfully
+					
+	Input: Mouse left clicks on Start button
+					
+	Output: The start button shows the visual effect and the game panel is loaded
+
+	Expected Output: The start button shows the visual effect and the game panel is loaded
+	
+	Test Result: Passed
+	
+	
+	\item{FS-IR-2: \textcolor{red}{Check critter info}}
+	
+	Type: Functional, Dynamic, Manual
+	
+	Initial State: Game interface
+
+	Input: Mouse left clicks on the Critter info button area
+
+	Output: The corresponding button shows the visual effect and shows the information of the all the critters.
+
+	Expected Output: The corresponding button shows the visual effect and shows the information of the all the critters.
+	
+	Test Result: Passed
+
+	
+	\item{FS-IR-3: Start Wave Button}
+					
+	Type: Functional, Dynamic, Manual
+					
+	Initial State: Game interface
+					
+	Input: Mouse left clicks on the Start Wave button
+					
+	Output: The corresponding button shows the visual effect and the next wave starts.
+					
+	Expected Output: The next wave of enemies released from start point.
+	
+	Test Result: Passed
+					
+					
+	\item{FS-IR-4: Speed Bar}
+					
+	Type: Functional, Dynamic, Manual
+					
+	Initial State: Game interface
+					
+	Input: Mouse left click and drag the speed adjustment bar to the speed level from 1 to 5.
+					
+	Output: The drag button shows the visual effect and the game speed changes to the maximum.
+					
+    Expected Output: The drag button shows the visual effect and the game speed changes
+	
+	Test Result: Passed
+					
+
+	\item{FS-IR-5: Pause Button}
+
+	Type: Functional, Dynamic, Manual
+
+	Initial State: Game interface
+
+	Input:  Mouse left clicks on the Pause button
+
+	Output: The corresponding button shows the visual effect, towers stop the attack, and enemies stop moving.
+	
+	Expected Output: The corresponding button shows the visual effect, towers stop the attack, and enemies stop moving.
+	
+	Test Result: Passed
+	
+	
+	
+	\item{FS-IR-6: Main Menu Button}
+	
+    Type: Functional, Dynamic, Manual
+
+	Initial State: Game interface
+
+	Input: Mouse left clicks on the Main Menu button
+
+	Output: The corresponding button shows the visual effect and the game returns to the main menu.
+
+	Expected Output: The corresponding button shows the visual effect and the game returns to the main menu.
+	
+	Test Result: Passed
+
+
+	\item{FS-IR-7: Attack Strategy Drop-down Box}
+					
+	Type: Functional, Dynamic, Manual
+					
+	Initial State: After the player choose a tower
+					
+	Input: Mouse left clicks on the tower attack strategy drop-down menu.
+					
+	Output: The menu drops down and shows 5 strategies to choose.
+					
+	Expected Output: The menu drops down and shows 5 strategies to choose.
+	
+	Test Result: Passed
+	
+	
+	\item{FS-IR-8: Upgrade Button}
+					
+	Type: Functional, Dynamic, Manual
+					
+	Initial State: After the player choose a tower
+					
+	Input: Mouse left clicks on the Tower upgrade button.
+					
+	Output: The corresponding button shows the visual effect and the tower is upgraded.
+					
+	Expected Output: The corresponding button shows the visual effect and the tower can be upgraded if conditions are met.
+	
+	Test Result: Passed
+	
+	
+	\item{FS-IR-9: Sell Button}
+					
+	Type: Functional, Dynamic, Manual
+					
+	Initial State: After the player choose a tower
+					
+	Input: Mouse left clicks on the Tower sell button.
+					
+	Output: The corresponding button shows the visual effect and the selected tower is sold.
+					
+	Expected Output: The corresponding button shows the visual effect and the selected tower will be sold.
+	
+	Test Result: Passed
+	
+	
+	\item{FS-IR-10: Fire Tower Button}
+					
+	Type: Functional, Dynamic, Manual
+					
+	Initial State: Game interface
+					
+	Input: Mouse left clicks on the fire tower button.
+					
+	Output: The corresponding button shows the visual effect and the player can choose a place to build a fire tower
+					
+	Expected Output: The corresponding button shows the visual effect and the player can choose a place to build a fire tower
+	
+	Test Result: Passed
+	
+	\item{FS-IR-11: Ice Tower Button}
+					
+	Type: Functional, Dynamic, Manual
+					
+	Initial State: Game interface
+					
+	Input: Mouse left clicks on the ice button
+					
+	Output: The corresponding button shows the visual effect and the player can choose a place to build a ice tower
+					
+	Expected Output: The corresponding button shows the visual effect and the player can choose a place to build a ice tower
+	
+	Test Result: Passed
+	
+	\item{FS-IR-12: Laser Tower Button}
+					
+	Type: Functional, Dynamic, Manual
+					
+	Initial State: Game interface
+					
+	Input: Mouse left clicks on the laser button
+					
+	Output: The corresponding button shows the visual effect and the player can choose a place to build a laser tower
+					
+	Expected Output: The corresponding button shows the visual effect and the player can choose a place to build a laser tower
+	
+	Test Result: Passed
+	
+	
+	\item{FS-IR-13: Area Attack Tower Button}
+					
+	Type: Functional, Dynamic, Manual
+					
+	Initial State: Game interface
+					
+	Input: Mouse left clicks on the Area Attack button.
+					
+	Output: The corresponding button shows the visual effect and the player can choose a place to build a area attack tower
+					
+	Expected Output: The corresponding button shows the visual effect and the player can choose a place to build a area attack tower
+	
+	Test Result: Passed
+	
+	
+	\item{FS-IR-14: N Button}
+					
+	Type: Functional, Dynamic, Manual
+					
+	Initial State: After the player finishing building a tower
+					
+	Input: Mouse left clicks on the N button.
+					
+	Output: The corresponding button shows the visual effect and the tower icon behind the mouse disappears.
+					
+	Expected Output: The button should let the player exit the tower placement stage.
+	
+	Test Result: Passed
+	
+	
+	\subsection{Game Logic}				
+	
+	\item{FS-GL-1: Enemy track}
+
+	Type: Functional, Dynamic, Manual
+
+	Initial State: A wave is running.
+	
+    Description: All the enemies take the correct path and move in a queue.
+	
+	Expected Output: All the enemies will go along the right path one by one.
+	
+	Test Result: Passed
+	
+	
+	\item{FS-GL-2: Tower Attack}
+					
+	Type: Functional, Dynamic, Manual
+					
+    Initial State: A wave is running.
+					
+	Description: The tower attacks the enemy once they are in range.
+					
+	Expected Output: The tower will attack the enemies within its attack range.
+	
+	Test Result: Passed
+	
+					
+	\item{FS-GL-3: Attack Strategy}
+					
+    Type: Functional, Dynamic, Manual
+					
+	Initial State: A tower is attacking
+					
+	Input: Selected "closest" strategy
+					
+	Output: The tower takes priority to attack the closest enemy.
+					
+	Expected Output: The tower will attack the enemy based on distance to tower.
+	
+	Test Result: Passed
+	
+	
+	\item{FS-GL-4: Tower Strengthen}
+	
+	Type: Functional, Dynamic, Automated
+	
+	Initial State: A tower has been upgraded
+	
+	Description: The tower will become stronger after upgrading, its damage per hit will increase.
+	
+	Expected Output: 
+	
+	Test Result: Passed
+	
+	
+	\item{FS-LG-5: Difficulty Increase}
+	
+	Type: Functional, Dynamic, Automated
+	
+	Initial State: A wave is ended
+	
+	Input: New wave started
+	
+	Output: New enemies with stronger default settings enter the game.
+	
+	Expected Output: A stronger wave of enemies will come into the path.
+	
+	Test Result: Passed
+	
+
+    \item{FS-LG-6: Stage Change}
+	
+	Type: Functional, Dynamic, Manual
+	
+	Initial State: One stage is clear
+	
+	Input: The player enters the next stage.
+	
+	Output: Map is changed after switching stage. Golds and lifes are initialized.
+	
+	Expected Output: A new map which is harder and more complex will be loaded and the game will be reset.
+	
+	Test Result: Passed
+
+    
+    
+	\subsection{Animation Effect}
+					
+	
+    
+    \item{FS-ANE-1: Enemy Animation}
+    
+    Type: Functional, Dynamic, Manual
+    
+    Initial State: The game state.
+    
+    Input: The player start a new wave.
+    
+    Output: The enemies move along the path with animation effect.
+    
+    Expected Output: The enemies move along the path at 60 fps animation.
+	
+	Test Result: Passed
+	
+    
+    \item{FS-ANE-2: Tower Animation}
+    
+    Type: Functional, Dynamic, Manual
+    
+    Initial State: The game state.
+    
+    Input: The player upgrade a new tower and there exists enemy in the tower attack range
+    
+    Output: The tower's trajectory is strengthened after upgrade.
+    
+    Expected Output: The tower's trajectory is strengthened after upgrade.
+	
+	Test Result: Passed
+	
+    
+	\subsubsection{Audio Effect}
+	
+					
+	\item{FS-AUE-1: Main Menu Audio}
+					
+	Type: Functional, Dynamic, Manual
+					
+    Initial State: The game installed successfully.
+					
+	Input: The player launches the game into main menu. 
+					
+	Output: The music for main menu works properly.
+					
+	Expected Output: The background music for main menu is played after main menu launches
+	
+	Test Result: Passed
+	
+	
+	\item{FS-AUE-2: Game Stage Audio}
+					
+	Type: Functional, Dynamic, Manual
+					
+    Initial State: Level selecting menu.
+					
+	Input: The player enter a game stage.
+					
+	Output: The audio of game stage works properly.
+					
+	Expected Output: The background music for game state is played after it launches
+	
+	Test Result: Passed
+					
+					
+
+    \section{Nonfunctional Requirements Evaluation}
+
+    \subsection{Usability}
+
+    \subsubsection{Support by platforms}
+    \item SS-1
+
+    Type: Structural, Dynamic, Manual
+
+    Initial State: Program installed onto system 
+
+    Input/Condition: Launch program on Windows OS, Mac OS, or Linux.
+
+    Output/Result: The exported jar file runs on Windows, Mac and Linux.
+
+    Expected Output: The game successfully runs on Window OS, Mac OS, or Linux.
+	
+	Test Result: Passed
+
+    \subsubsection{Accessibility to buttons}
+    \item SS-2
+
+    Type: Structural, Dynamic, Manual
+
+    Initial State: Program installed onto system
+
+    Input/Condition: launch program
+
+    Output/Result: Main menu shows up with 2 big, clearly labelled buttons
+
+    Expected Output: Main menu contains 2 simple, easy to understand buttons
+	
+	Test Result: Passed
+
+
+    \subsection{Performance}
+    \subsubsection{Stability of system}
+
+    \item SS-3
+
+    Type: Structural, Dynamic, Manual
+
+    Initial State: Program installed onto system
+    
+    Input/Condition: launch program and start game.
+
+    Output/Result: the game runs 20 rounds without crash.
+
+    Expected Output: the game will not crash after 10 rounds.
+	
+	Test Result: Passed
+	
+	
+	
+	\end{enumerate}
+
+
+\section{Changes Due to Testings}
+\subsection{Game Logic and Algorithms}
+No changes are made to game logic and algorithms on the back end, since they passed all the automated tests and manual tests we perform on the system.
+\subsection{Graphical User Interface}
+One minor tweak we performed on GUI is the color of texts on the main menu. According to our manual tests on main menu, the texts are having a similar color with its background. We changed the color to white, to separate the texts from backgrounds for better usability. 
+
+
+	
+							
+				
+\section{Automated Testings}
+	The JUnit framework will be used to do unit testing for this project. 
+		
+	\subsection{Unit tests of internal functions}
+	\begin{enumerate}
+	\item{UT-1: Next Wave}
+	
+	Type: Functional, Dynamic, Automated
+	
+	Initial State: A wave is ended
+	
+	Input: New wave started
+	
+	Output: New enemies with stronger default settings enter the game.
+	
+	Expected Output: A stronger wave of enemies will come into the path.
+	
+	Test Result: Passed
+	
+	\item{UT-2: Fire Tower Upgrade}
+	
+	Type: Functional, Dynamic, Automated
+	
+	Initial State: Level 1 fire tower
+	
+	Input: Upgrade fire tower
+	
+	Output: Damage multiplier increases
+	
+	Expected Output: Damage increases as tower upgrades
+	
+	Test Result: Passed
+	
+	\item{UT-3: Ice Tower Upgrade}
+	
+	Type: Functional, Dynamic, Automated
+	
+	Initial State: Level 1 ice tower
+	
+	Input: Upgrade ice tower
+	
+	Output: Damage multiplier increases
+	
+	Expected Output: Damage increases as tower upgrades
+	
+	Test Result: Passed
+	
+	\item{UT-4: Laser Tower Upgrade}
+	
+	Type: Functional, Dynamic, Automated
+	
+	Initial State: Level 1 laser tower
+	
+	Input: Upgrade laser tower
+	
+	Output: Damage multiplier increases
+	
+	Expected Output: Damage increases as tower upgrades
+	
+	Test Result: Passed
+	
+	\item{UT-5: AreaAttack Tower Upgrade}
+	
+	Type: Functional, Dynamic, Automated
+	
+	Initial State: Level 1 AreaAttack tower
+	
+	Input: Upgrade AreaAttack tower
+	
+	Output: Damage multiplier increases
+	
+	Expected Output: Damage increases as tower upgrades
+	
+	Test Result: Passed
+	\end{enumerate}
+	
+		
+		
+\section{Traceability Matrices}
+
+\subsection{Trace to Modules}
+
+\begin{table}[!htbp]
+      \begin{tabular}{ll}
+        \toprule
+        Modules & Tests \\
+        \midrule
+        M5,M16,M17,M18,M19,M20 & FS-IR-1, FS-AUE-1 \\
+        M3,M6,M7,M8 & FS-ANE-1, FS-ANE-2, UT-1, UT-2, UT-3, UT-4, UT-5\\
+        M3,M7,M10,M16 & FS-GL-1, FS-GL-2, FS-GL-3, FS-GL-4 \\
+        M5,M2,M16,M17,M9 & FS-AUE-2, FS-IR-2~14 \\
+        M1,M4,M17 & FS-LG-5, FS-LG-6 \\
+        M17,M18,M19 & FS-IR-2~14  \\
+        M16 & FS-IR-2~14 \\
+        M1 & SS-1  \\
+        M2,M4 & SS-3 \\
+        M1 & SS-1  \\
+        
+        \bottomrule
+        \end{tabular}
+        \caption{Trace Between Modules and Tests}
+        % Colour for the rulings in tables:
+        \makeatletter
+           \def\rulecolor#1#{\CT@arc{#1}}
+           \def\CT@arc#1#2{%
+           \ifdim\baselineskip=\z@\noalign\fi
+           {\gdef\CT@arc@{\color#1{#2}}}}
+           \let\CT@arc@\relax
+          \rulecolor{black!50}
+        \makeatother
+        \label{Table 2}
+        \end{table}
+
+
+\subsection{Trace to Requirements}
+    \FloatBarrier
+        \begin{table}[!htbp]
+        \begin{tabular}{ll}
+        \toprule
+        Requirements & Tests \\
+        \midrule
+        FR1 & FS-IR-1, FS-AUE-1\\
+        FR2 & FS-ANE-1, FS-ANE-2, UT-1, UT-2, UT-3, UT-4, UT-5\\
+        FR3 & FS-GL-1, FS-GL-2, FS-GL-3, FS-GL-4\\
+        FR4 & FS-AUE-2, FS-IR-2~14\\
+        FR5 & FS-LG-5, FS-LG-6\\
+        NF1 & FS-IR-2~14\\
+        NF3 & SS-1\\
+        NF2 & FS-IR-2~14\\
+        NF4 & SS-3\\
+        NF5 & SS-1\\
+    
+        \bottomrule
+        \end{tabular}
+        \caption{Trace Between Requirements and Tests}
+        % Colour for the rulings in tables:
+        \makeatletter
+           \def\rulecolor#1#{\CT@arc{#1}}
+           \def\CT@arc#1#2{%
+           \ifdim\baselineskip=\z@\noalign\fi
+           {\gdef\CT@arc@{\color#1{#2}}}}
+           \let\CT@arc@\relax
+          \rulecolor{black!50}
+        \makeatother
+        \label{Table 3}
+        \end{table}
+\FloatBarrier
+
+\section{Code Coverage Metrics}
+The tower defense development team, Group 30, has managed to cover over 90\% of all the code in this project in the tests. Referring to the traceability matrices above, all the modules and corresponding requirements are tested, with most of them tested more than once. This proves that almost all the code are been tested and verified. 
+
+\end{document}
